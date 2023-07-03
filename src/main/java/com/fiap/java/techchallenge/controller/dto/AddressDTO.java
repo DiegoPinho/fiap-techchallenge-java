@@ -1,4 +1,4 @@
-package com.fiap.java.techchallenge.dto;
+package com.fiap.java.techchallenge.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

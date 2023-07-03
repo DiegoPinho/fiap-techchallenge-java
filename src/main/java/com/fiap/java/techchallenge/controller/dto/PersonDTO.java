@@ -1,4 +1,4 @@
-package com.fiap.java.techchallenge.dto;
+package com.fiap.java.techchallenge.controller.dto;
 
 import java.time.LocalDate;
 import java.util.Date;
