@@ -23,9 +23,6 @@ import com.fiap.java.techchallenge.domain.HomeAppliance;
 import com.fiap.java.techchallenge.service.HomeApplianceService;
 import com.fiap.java.techchallenge.utils.DTOValidator;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validator;
-
 @RestController
 @RequestMapping("/appliances")
 public class HomeApplianceController {

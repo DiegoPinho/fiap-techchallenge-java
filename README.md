@@ -2,7 +2,12 @@
 
 ## API Documentation
 
-### Home Appliance
+## Health
+
+`GET /health`
+Checks if the API is ok.
+
+## Home Appliance
 
 `GET /appliances`
 Return all home appliances.
@@ -36,3 +41,42 @@ body (JSON):
 
 `DELETE /appliances/:id`
 Deletes a home appliance based on the id.
+
+## Addresses
+
+`GET /addresses`
+Return all addressess.
+
+`GET /addresses/:id`
+Return a address based on the id.
+
+`POST /addresses`
+Creates a new address.
+
+body (JSON):
+```
+{
+  "street": String
+  "number": Integer
+  "string": String
+  "city": String
+  "state": String
+}
+```
+
+`PUT /addresses/:id`
+Updates a address based on the id.
+
+body (JSON):
+```
+{
+  "street": String
+  "number": Integer
+  "string": String
+  "city": String
+  "state": String
+}
+```
+
+`DELETE /addresses/:id`
+Deletes a address based on the id.
