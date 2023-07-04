@@ -15,54 +15,53 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiap.java.techchallenge.controller.dto.HomeApplianceDTO;
-import com.fiap.java.techchallenge.domain.HomeAppliance;
-import com.fiap.java.techchallenge.service.HomeApplianceService;
+import com.fiap.java.techchallenge.controller.dto.PersonDTO;
+import com.fiap.java.techchallenge.domain.Person;
+import com.fiap.java.techchallenge.service.PeopleService;
 import com.fiap.java.techchallenge.utils.DTOValidator;
 
 @RestController
-@RequestMapping("/appliances")
-public class HomeApplianceController {
+@RequestMapping("/people")
+public class PeopleController {
 
   @Autowired
-  private HomeApplianceService homeApplianceService;
+  private PeopleService service;
 
   @Autowired
   private DTOValidator validator;
 
   @GetMapping
   public ResponseEntity<?> getAll() {
-    List<HomeAppliance> homeAppliances = this.homeApplianceService.getAll();
-    return ResponseEntity.ok().body(homeAppliances);
+    List<Person> addresses = this.service.getAll();
+    return ResponseEntity.ok().body(addresses);
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
-    HomeAppliance homeAppliance = this.homeApplianceService.getById(id);
-    return ResponseEntity.ok().body(homeAppliance);
+    Person person = this.service.getById(id);
+    return ResponseEntity.ok().body(person);
   }
 
   @PostMapping
-  public ResponseEntity<?> create(@RequestBody HomeApplianceDTO homeApplianceDTO) {
-
-    Map<Object, Object> collect = validator.check(homeApplianceDTO);
+  public ResponseEntity<?> create(@RequestBody PersonDTO personDTO) {
+    Map<Object, Object> collect = validator.check(personDTO);
     if (!collect.isEmpty()) {
       return ResponseEntity.badRequest().body(collect);
     }
 
-    this.homeApplianceService.create(homeApplianceDTO);
+    this.service.create(personDTO);
     return ResponseEntity.status(HttpStatus.CREATED).body(null);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<?> update(@RequestBody HomeApplianceDTO homeApplianceDTO, @PathVariable("id") Integer id) {
-    this.homeApplianceService.update(id, homeApplianceDTO);
+  public ResponseEntity<?> update(@RequestBody PersonDTO personDTO, @PathVariable("id") Integer id) {
+    this.service.update(id, personDTO);
     return ResponseEntity.ok().body(null);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-    this.homeApplianceService.delete(id);
+    this.service.delete(id);
     return ResponseEntity.ok().body(null);
   }
 

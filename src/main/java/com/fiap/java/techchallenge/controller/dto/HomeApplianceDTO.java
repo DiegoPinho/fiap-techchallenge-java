@@ -1,7 +1,5 @@
 package com.fiap.java.techchallenge.controller.dto;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fiap.java.techchallenge.domain.HomeAppliance;
 

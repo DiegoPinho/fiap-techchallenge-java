@@ -80,3 +80,40 @@ body (JSON):
 
 `DELETE /addresses/:id`
 Deletes a address based on the id.
+
+## People
+
+`GET /people`
+Return all people.
+
+`GET /people/:id`
+Return a person based on the id.
+
+`POST /people`
+Creates a new person.
+
+body (JSON):
+```
+{
+  "name": String
+  "birthDate": "yyyy-MM-dd",
+  "gender": "MALE | FEMALE | NON_BINARY",
+  "relationship": String
+}
+```
+
+`PUT /people/:id`
+Updates a person based on the id.
+
+body (JSON):
+```
+{
+  "name": String
+  "birthDate": "yyyy-MM-dd",
+  "gender": "MALE | FEMALE | NON_BINARY",
+  "relationship": String
+}
+```
+
+`DELETE /people/:id`
+Deletes a person based on the id.

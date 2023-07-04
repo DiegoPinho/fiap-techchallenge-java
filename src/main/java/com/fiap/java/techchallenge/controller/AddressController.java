@@ -43,7 +43,7 @@ public class AddressController {
   }
 
   @PostMapping
-  public ResponseEntity create(@RequestBody AddressDTO addressDTO) {
+  public ResponseEntity<?> create(@RequestBody AddressDTO addressDTO) {
     Map<Object, Object> collect = validator.check(addressDTO);
     if (!collect.isEmpty()) {
       return ResponseEntity.badRequest().body(collect);
