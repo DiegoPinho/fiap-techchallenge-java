@@ -17,8 +17,8 @@ public class DTOValidator {
   Validator validator;
 
   public <T> Map<Object, Object> check(T dto) {
-    Set<ConstraintViolation<T>> violacoes = validator.validate(dto);
-    Map<Object, Object> collect = violacoes.stream()
+    Set<ConstraintViolation<T>> violations = validator.validate(dto);
+    Map<Object, Object> collect = violations.stream()
         .collect(Collectors.toMap(violacao -> violacao.getPropertyPath(), violacao -> violacao.getMessage()));
 
     return collect;

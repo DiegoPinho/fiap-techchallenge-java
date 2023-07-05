@@ -38,31 +38,43 @@ public class AddressController {
 
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
-    Address address = this.service.getById(id);
-    return ResponseEntity.ok().body(address);
+    try {
+      Address address = this.service.getById(id);
+      return ResponseEntity.ok().body(address);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
   @PostMapping
   public ResponseEntity<?> create(@RequestBody AddressDTO addressDTO) {
-    Map<Object, Object> collect = validator.check(addressDTO);
-    if (!collect.isEmpty()) {
-      return ResponseEntity.badRequest().body(collect);
+    Map<Object, Object> violations = validator.check(addressDTO);
+    if (!violations.isEmpty()) {
+      return ResponseEntity.badRequest().body(violations);
     }
 
-    this.service.create(addressDTO);
-    return ResponseEntity.status(HttpStatus.CREATED).body(null);
+    Address address = this.service.create(addressDTO);
+    return ResponseEntity.status(HttpStatus.CREATED).body(address);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<?> update(@RequestBody AddressDTO addressDTO, @PathVariable("id") Integer id) {
-    this.service.update(id, addressDTO);
-    return ResponseEntity.ok().body(null);
+    try {
+      this.service.update(id, addressDTO);
+      return ResponseEntity.ok().build();
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-    this.service.delete(id);
-    return ResponseEntity.ok().body(null);
+    try {
+      this.service.delete(id);
+      return ResponseEntity.ok().body(null);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
 }

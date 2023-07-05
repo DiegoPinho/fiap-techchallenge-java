@@ -28,8 +28,8 @@ public class AddressService {
     return address;
   }
 
-  public void create(AddressDTO addressDTO) {
-    this.repository.save(addressDTO.toAddress());
+  public Address create(AddressDTO addressDTO) {
+    return this.repository.save(addressDTO.toAddress());
   }
 
   public void update(Integer id, AddressDTO addressDTO) {
