@@ -18,6 +18,7 @@ public class PersonDTO {
   private String name;
 
   @JsonProperty
+  @NotNull(message = "BirthDate is required and cannot be blank")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate birthDate;
 
