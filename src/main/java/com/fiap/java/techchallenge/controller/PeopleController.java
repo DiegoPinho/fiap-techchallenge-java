@@ -38,31 +38,43 @@ public class PeopleController {
 
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
-    Person person = this.service.getById(id);
-    return ResponseEntity.ok().body(person);
+    try {
+      Person person = this.service.getById(id);
+      return ResponseEntity.ok().body(person);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
   @PostMapping
   public ResponseEntity<?> create(@RequestBody PersonDTO personDTO) {
-    Map<Object, Object> collect = validator.check(personDTO);
-    if (!collect.isEmpty()) {
-      return ResponseEntity.badRequest().body(collect);
+    Map<Object, Object> violations = validator.check(personDTO);
+    if (!violations.isEmpty()) {
+      return ResponseEntity.badRequest().body(violations);
     }
 
-    this.service.create(personDTO);
-    return ResponseEntity.status(HttpStatus.CREATED).body(null);
+    Person person = this.service.create(personDTO);
+    return ResponseEntity.status(HttpStatus.CREATED).body(person);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<?> update(@RequestBody PersonDTO personDTO, @PathVariable("id") Integer id) {
-    this.service.update(id, personDTO);
-    return ResponseEntity.ok().body(null);
+    try {
+      this.service.update(id, personDTO);
+      return ResponseEntity.ok().body(null);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-    this.service.delete(id);
-    return ResponseEntity.ok().body(null);
+    try {
+      this.service.delete(id);
+      return ResponseEntity.ok().body(null);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
 }

@@ -28,9 +28,9 @@ public class PeopleService {
     return person;
   }
 
-  public void create(PersonDTO personDTO) {
+  public Person create(PersonDTO personDTO) {
     Person person = personDTO.toPerson();
-    this.repository.save(person);
+    return this.repository.save(person);
   }
 
   public void update(Integer id, PersonDTO personDTO) {
