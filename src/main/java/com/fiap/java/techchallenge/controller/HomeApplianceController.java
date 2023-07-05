@@ -38,32 +38,45 @@ public class HomeApplianceController {
 
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
-    HomeAppliance homeAppliance = this.homeApplianceService.getById(id);
-    return ResponseEntity.ok().body(homeAppliance);
+    try {
+      HomeAppliance homeAppliance = this.homeApplianceService.getById(id);
+      return ResponseEntity.ok().body(homeAppliance);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
   @PostMapping
   public ResponseEntity<?> create(@RequestBody HomeApplianceDTO homeApplianceDTO) {
 
-    Map<Object, Object> collect = validator.check(homeApplianceDTO);
-    if (!collect.isEmpty()) {
-      return ResponseEntity.badRequest().body(collect);
+    Map<Object, Object> violations = validator.check(homeApplianceDTO);
+    if (!violations.isEmpty()) {
+      return ResponseEntity.badRequest().body(violations);
     }
 
-    this.homeApplianceService.create(homeApplianceDTO);
-    return ResponseEntity.status(HttpStatus.CREATED).body(null);
+    HomeAppliance homeAppliance = this.homeApplianceService.create(homeApplianceDTO);
+    return ResponseEntity.status(HttpStatus.CREATED).body(homeAppliance);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<?> update(@RequestBody HomeApplianceDTO homeApplianceDTO, @PathVariable("id") Integer id) {
-    this.homeApplianceService.update(id, homeApplianceDTO);
-    return ResponseEntity.ok().body(null);
+    try {
+      this.homeApplianceService.update(id, homeApplianceDTO);
+      return ResponseEntity.ok().build();
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-    this.homeApplianceService.delete(id);
-    return ResponseEntity.ok().body(null);
+    try {
+      this.homeApplianceService.delete(id);
+      return ResponseEntity.ok().build();
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
 }

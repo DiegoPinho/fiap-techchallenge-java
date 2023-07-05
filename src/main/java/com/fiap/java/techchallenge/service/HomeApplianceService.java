@@ -28,9 +28,9 @@ public class HomeApplianceService {
     return homeAppliance;
   }
 
-  public void create(HomeApplianceDTO homeApplianceDTO) {
+  public HomeAppliance create(HomeApplianceDTO homeApplianceDTO) {
     HomeAppliance homeAppliance = homeApplianceDTO.toHomeAppliance();
-    this.repository.save(homeAppliance);
+    return this.repository.save(homeAppliance);
   }
 
   public void update(Integer id, HomeApplianceDTO homeApplianceDTO) {

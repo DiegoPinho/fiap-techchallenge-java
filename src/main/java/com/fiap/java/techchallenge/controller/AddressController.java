@@ -71,7 +71,7 @@ public class AddressController {
   public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
     try {
       this.service.delete(id);
-      return ResponseEntity.ok().body(null);
+      return ResponseEntity.ok().build();
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
