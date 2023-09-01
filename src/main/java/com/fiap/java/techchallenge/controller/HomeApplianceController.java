@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiap.java.techchallenge.controller.criterias.HomeApplianceCriteria;
 import com.fiap.java.techchallenge.controller.dto.HomeApplianceDTO;
-import com.fiap.java.techchallenge.domain.HomeAppliance;
+import com.fiap.java.techchallenge.entity.HomeAppliance;
 import com.fiap.java.techchallenge.service.HomeApplianceService;
 import com.fiap.java.techchallenge.utils.DTOValidator;
 
@@ -31,13 +32,13 @@ public class HomeApplianceController {
   private DTOValidator validator;
 
   @GetMapping
-  public ResponseEntity<?> getAll() {
-    List<HomeAppliance> homeAppliances = this.homeApplianceService.getAll();
+  public ResponseEntity<?> getAll(HomeApplianceCriteria criteria) {
+    List<HomeAppliance> homeAppliances = this.homeApplianceService.getAll(criteria);
     return ResponseEntity.ok().body(homeAppliances);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
+  public ResponseEntity<?> getById(@PathVariable("id") Long id) {
     try {
       HomeAppliance homeAppliance = this.homeApplianceService.getById(id);
       return ResponseEntity.ok().body(homeAppliance);
@@ -48,18 +49,18 @@ public class HomeApplianceController {
 
   @PostMapping
   public ResponseEntity<?> create(@RequestBody HomeApplianceDTO homeApplianceDTO) {
-
     Map<Object, Object> violations = validator.check(homeApplianceDTO);
     if (!violations.isEmpty()) {
       return ResponseEntity.badRequest().body(violations);
     }
 
-    HomeAppliance homeAppliance = this.homeApplianceService.create(homeApplianceDTO);
+    Long userId = 1L; // FIXME: this is fake for now, soon will be by authentication
+    HomeAppliance homeAppliance = this.homeApplianceService.create(userId, homeApplianceDTO);
     return ResponseEntity.status(HttpStatus.CREATED).body(homeAppliance);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<?> update(@RequestBody HomeApplianceDTO homeApplianceDTO, @PathVariable("id") Integer id) {
+  public ResponseEntity<?> update(@RequestBody HomeApplianceDTO homeApplianceDTO, @PathVariable("id") Long id) {
     try {
       this.homeApplianceService.update(id, homeApplianceDTO);
       return ResponseEntity.ok().build();
@@ -70,7 +71,7 @@ public class HomeApplianceController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+  public ResponseEntity<?> delete(@PathVariable("id") Long id) {
     try {
       this.homeApplianceService.delete(id);
       return ResponseEntity.ok().build();

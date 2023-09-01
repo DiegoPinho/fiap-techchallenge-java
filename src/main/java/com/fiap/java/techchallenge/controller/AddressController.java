@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiap.java.techchallenge.controller.criterias.AddressCriteria;
 import com.fiap.java.techchallenge.controller.dto.AddressDTO;
-import com.fiap.java.techchallenge.domain.Address;
+import com.fiap.java.techchallenge.entity.Address;
 import com.fiap.java.techchallenge.service.AddressService;
 import com.fiap.java.techchallenge.utils.DTOValidator;
 
@@ -31,13 +32,13 @@ public class AddressController {
   private DTOValidator validator;
 
   @GetMapping
-  public ResponseEntity<?> getAll() {
-    List<Address> addresses = this.service.getAll();
+  public ResponseEntity<?> getAll(AddressCriteria criteria) {
+    List<Address> addresses = this.service.getAll(criteria);
     return ResponseEntity.ok().body(addresses);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
+  public ResponseEntity<?> getById(@PathVariable("id") Long id) {
     try {
       Address address = this.service.getById(id);
       return ResponseEntity.ok().body(address);
@@ -53,12 +54,13 @@ public class AddressController {
       return ResponseEntity.badRequest().body(violations);
     }
 
-    Address address = this.service.create(addressDTO);
+    Long userId = 1L; // FIXME: this is fake for now, soon will be by authentication
+    Address address = this.service.create(userId, addressDTO);
     return ResponseEntity.status(HttpStatus.CREATED).body(address);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<?> update(@RequestBody AddressDTO addressDTO, @PathVariable("id") Integer id) {
+  public ResponseEntity<?> update(@RequestBody AddressDTO addressDTO, @PathVariable("id") Long id) {
     try {
       this.service.update(id, addressDTO);
       return ResponseEntity.ok().build();
@@ -68,7 +70,7 @@ public class AddressController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+  public ResponseEntity<?> delete(@PathVariable("id") Long id) {
     try {
       this.service.delete(id);
       return ResponseEntity.ok().build();

@@ -1,0 +1,271 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "fiap | tech-challenge",
+    "dateExported": "2023-09-02T06:15:09.729Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "2069d431-1079-486d-8b4e-87faf3338b0b",
+            "name": "home appliances",
+            "containerId": "",
+            "created": "2023-09-02T04:15:32.896Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "4d5135d7-9128-4599-aeb4-69784dad4672",
+            "name": "address",
+            "containerId": "",
+            "created": "2023-09-02T04:19:57.511Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "95a52183-84c1-41ec-9dce-d5a98281a754",
+            "name": "person",
+            "containerId": "",
+            "created": "2023-09-02T04:22:33.390Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "c5ff6b96-d642-4a44-b144-d980f50a5d9d",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "2069d431-1079-486d-8b4e-87faf3338b0b",
+            "name": "GET /appliances",
+            "url": "http://localhost:8081/appliances",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-09-02T04:15:59.758Z",
+            "modified": "2023-09-02T04:16:39.691Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2419af2c-5b5d-430a-a0a0-7c012567ee77",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "4d5135d7-9128-4599-aeb4-69784dad4672",
+            "name": "GET /addresses",
+            "url": "http://localhost:8081/addresses",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-09-02T04:19:57.511Z",
+            "modified": "2023-09-02T04:20:23.865Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1ef2b702-a1a8-4146-9b8d-8eea78a2da97",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "95a52183-84c1-41ec-9dce-d5a98281a754",
+            "name": "GET /people",
+            "url": "http://localhost:8081/people",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-09-02T04:22:33.390Z",
+            "modified": "2023-09-02T04:23:19.632Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a390e9d5-dcc0-4dfa-b948-5847fe2461c1",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "2069d431-1079-486d-8b4e-87faf3338b0b",
+            "name": "GET /appliances/:id",
+            "url": "http://localhost:8081/appliances/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-09-02T04:17:04.341Z",
+            "modified": "2023-09-02T04:35:17.537Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8ed11f52-beed-4594-87cf-ecad6787828a",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "4d5135d7-9128-4599-aeb4-69784dad4672",
+            "name": "GET /addresses/:id",
+            "url": "http://localhost:8081/addresses/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-09-02T04:19:57.512Z",
+            "modified": "2023-09-02T04:38:43.955Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b0c7f757-9bfd-4f72-8e6a-c775284c7c5f",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "95a52183-84c1-41ec-9dce-d5a98281a754",
+            "name": "GET /people/:id",
+            "url": "http://localhost:8081/people/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-09-02T04:22:33.391Z",
+            "modified": "2023-09-02T06:11:44.936Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "24a76095-a72c-41b5-8bc9-7cef008cd91a",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "2069d431-1079-486d-8b4e-87faf3338b0b",
+            "name": "POST /appliances",
+            "url": "http://localhost:8081/appliances",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-09-02T04:17:29.490Z",
+            "modified": "2023-09-02T04:34:01.098Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Computador\",\n  \"model\": \"Dell\",\n  \"power\": 20,\n  \"manufacturer\": \"Dell\",\n  \"voltage\": 110,\n  \"dailyUse\": 24\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "23132c70-20c9-44ff-b9d8-a88d67f3bcf1",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "4d5135d7-9128-4599-aeb4-69784dad4672",
+            "name": "POST /addresses",
+            "url": "http://localhost:8081/addresses",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-09-02T04:19:57.513Z",
+            "modified": "2023-09-02T04:37:51.219Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"street\": \"Avenida Paulista\",\n  \"number\": 1200,\n  \"district\": \"São Paulo\",\n  \"city\": \"São Paulo\",\n  \"state\": \"São Paulo\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0dc8ea97-a225-45e8-8a97-f945c1d5c2ff",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "95a52183-84c1-41ec-9dce-d5a98281a754",
+            "name": "POST /people",
+            "url": "http://localhost:8081/people",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-09-02T04:22:33.392Z",
+            "modified": "2023-09-02T06:11:59.151Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Jonas\",\n  \"birthDate\": \"1992-07-21\",\n  \"gender\": \"MALE\",\n  \"relationship\": \"Father\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "94f09fd5-7af5-4e9c-9087-3c6d99b46cc2",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "2069d431-1079-486d-8b4e-87faf3338b0b",
+            "name": "PUT /appliances",
+            "url": "http://localhost:8081/appliances/1",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-09-02T04:18:55.443Z",
+            "modified": "2023-09-02T04:35:42.538Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Computador\",\n  \"model\": \"Dell\",\n  \"power\": 20,\n  \"manufacturer\": \"Dell\",\n  \"voltage\": 220,\n  \"dailyUse\": 24\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bd1e3d06-2f21-4bf6-af6a-fe357b87c040",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "4d5135d7-9128-4599-aeb4-69784dad4672",
+            "name": "PUT /addresses",
+            "url": "http://localhost:8081/addresses/1",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-09-02T04:19:57.514Z",
+            "modified": "2023-09-02T04:38:20.419Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"street\": \"Avenida Paulista\",\n  \"number\": 1200,\n  \"district\": \"Bela Vista\",\n  \"city\": \"São Paulo\",\n  \"state\": \"São Paulo\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4e80273e-8179-44c8-beed-e19b0fe51598",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "95a52183-84c1-41ec-9dce-d5a98281a754",
+            "name": "PUT /people",
+            "url": "http://localhost:8081/people/:id",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-09-02T04:22:33.393Z",
+            "modified": "2023-09-02T04:25:00.492Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"\",\n  \"birthDate\": \"\",\n  \"gender\": \"\",\n  \"relationship\": \"\",\n  \"relatives\": []\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6c85e9ab-07cb-4301-837b-1c9c05a66393",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "2069d431-1079-486d-8b4e-87faf3338b0b",
+            "name": "DELETE /appliances/:id",
+            "url": "http://localhost:8081/appliances/1",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-09-02T04:19:20.538Z",
+            "modified": "2023-09-02T04:35:52.669Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "49a5482b-aa64-42c4-a742-d9f7315aeacf",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "4d5135d7-9128-4599-aeb4-69784dad4672",
+            "name": "DELETE /addresses/:id",
+            "url": "http://localhost:8081/addresses/1",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-09-02T04:19:57.515Z",
+            "modified": "2023-09-02T04:38:49.432Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1ccfd6fd-057f-46eb-8fc9-598d39e922dd",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "95a52183-84c1-41ec-9dce-d5a98281a754",
+            "name": "DELETE /people/:id",
+            "url": "http://localhost:8081/people/:id",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-09-02T04:22:33.394Z",
+            "modified": "2023-09-02T04:23:42.429Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

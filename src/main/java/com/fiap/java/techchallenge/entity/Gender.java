@@ -1,4 +1,4 @@
-package com.fiap.java.techchallenge.domain;
+package com.fiap.java.techchallenge.entity;
 
 public enum Gender {
   FEMALE,

@@ -1,22 +1,39 @@
-package com.fiap.java.techchallenge.domain;
+package com.fiap.java.techchallenge.entity;
 
-import com.fiap.java.techchallenge.utils.RandomIdGenerator;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+@Table
+@EqualsAndHashCode(of = { "id" })
+@ToString(of = { "id" }, callSuper = true)
+@Entity(name = "addresses")
 public class Address {
 
-  private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
   private String street;
   private Integer number;
   private String district;
   private String city;
   private String state;
 
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
+
   public Address() {
-    this.id = RandomIdGenerator.generateId();
   }
 
   public Address(String street, Integer number, String district, String city, String state) {
-    this();
     this.street = street;
     this.number = number;
     this.district = district;
@@ -24,11 +41,11 @@ public class Address {
     this.state = state;
   }
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -70,6 +87,14 @@ public class Address {
 
   public void setState(String state) {
     this.state = state;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 
 }

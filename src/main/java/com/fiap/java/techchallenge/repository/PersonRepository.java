@@ -3,8 +3,8 @@ package com.fiap.java.techchallenge.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.fiap.java.techchallenge.entity.Address;
+import com.fiap.java.techchallenge.entity.Person;
 
-public interface AddressRepository extends JpaRepository<Address, Long>, JpaSpecificationExecutor<Address> {
+public interface PersonRepository extends JpaRepository<Person, Long>, JpaSpecificationExecutor<Person> {
 
 }

@@ -1,7 +1,7 @@
 package com.fiap.java.techchallenge.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fiap.java.techchallenge.domain.Address;
+import com.fiap.java.techchallenge.entity.Address;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
