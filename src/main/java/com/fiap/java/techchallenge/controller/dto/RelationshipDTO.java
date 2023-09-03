@@ -6,15 +6,15 @@ import jakarta.validation.constraints.NotBlank;
 
 public class RelationshipDTO {
   @JsonProperty
-  @NotBlank(message = "personId is required")
+  @NotBlank(message = "personId is required and cannot be blank")
   private Long personId;
 
   @JsonProperty
-  @NotBlank(message = "relativeId is required")
+  @NotBlank(message = "relativeId is required and cannot be blank")
   private Long relativeId;
 
   @JsonProperty
-  @NotBlank(message = "relation is required")
+  @NotBlank(message = "relation is required and cannot be blank")
   private String relation;
 
   public RelationshipDTO(Long personId, Long relativeId, String relation) {

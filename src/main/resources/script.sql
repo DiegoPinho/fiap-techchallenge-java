@@ -16,6 +16,7 @@ CREATE TABLE addresses (
   city VARCHAR(255),
   state VARCHAR(255),
   user_id INTEGER,
+
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -28,7 +29,10 @@ CREATE TABLE homeappliances (
   voltage INTEGER,
   dailyUse INTEGER,
   user_id INTEGER,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  address_id INTEGER,
+
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (address_id) REFERENCES addresses(id)
 );
 
 CREATE TABLE person (
@@ -39,7 +43,10 @@ CREATE TABLE person (
   relationship VARCHAR(255),
   id_parent INTEGER REFERENCES person(id) ON DELETE SET NULL,
   user_id INTEGER,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  address_id INTEGER,
+  
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (address_id) REFERENCES addresses(id)
 );
 
 CREATE TABLE relationships (
@@ -50,7 +57,17 @@ CREATE TABLE relationships (
 
   FOREIGN KEY (person_id) REFERENCES person(id),
   FOREIGN KEY (relative_id) REFERENCES person(id)
-)
+);
 
 CREATE INDEX idx_person_id_parent ON person(id_parent);
 ALTER TABLE person ADD CONSTRAINT FK_PARENT_person foreign key (id_parent) references person;
+
+CREATE TABLE consumptions(
+  id SERIAL PRIMARY KEY,
+  dailyuse INTEGER,
+  person_id INTEGER,
+  homeappliance_id INTEGER,
+
+  FOREIGN KEY (person_id) REFERENCES person(id),
+  FOREIGN KEY (homeappliance_id) REFERENCES homeappliances(id)
+);

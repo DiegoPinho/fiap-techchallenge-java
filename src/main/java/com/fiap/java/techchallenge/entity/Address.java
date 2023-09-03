@@ -1,11 +1,15 @@
 package com.fiap.java.techchallenge.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -29,6 +33,12 @@ public class Address {
   @ManyToOne
   @JoinColumn(name = "user_id")
   private User user;
+
+  @OneToMany(mappedBy = "address")
+  private List<Person> persons;
+
+  @OneToMany(mappedBy = "address")
+  private List<HomeAppliance> homeAppliances;
 
   public Address() {
   }

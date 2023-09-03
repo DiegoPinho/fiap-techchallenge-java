@@ -40,6 +40,10 @@ public class Person {
   @JoinColumn(name = "user_id")
   private User user;
 
+  @ManyToOne
+  @JoinColumn(name = "address_id")
+  private Address address;
+
   public Person() {
   }
 
@@ -87,6 +91,22 @@ public class Person {
 
   public void setUser(User user) {
     this.user = user;
+  }
+
+  public List<Relationship> getRelationships() {
+    return relationships;
+  }
+
+  public void setRelationships(List<Relationship> relationships) {
+    this.relationships = relationships;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
   }
 
 }

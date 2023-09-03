@@ -32,11 +32,35 @@ public class HomeApplianceDTO {
   private Integer voltage;
 
   @JsonProperty
-  @NotNull(message = "Power is required and cannot be blank")
-  @Positive(message = "Power is required and cannot be blank")
-  private Integer dailyUse;
+  @NotNull(message = "AddressId is required and cannot be blank")
+  private Long addressId;
 
   public HomeAppliance toHomeAppliance() {
-    return new HomeAppliance(this.name, this.model, this.power, this.manufacturer, this.voltage, this.dailyUse);
+    return new HomeAppliance(this.name, this.model, this.power, this.manufacturer, this.voltage);
   }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getModel() {
+    return model;
+  }
+
+  public Integer getPower() {
+    return power;
+  }
+
+  public String getManufacturer() {
+    return manufacturer;
+  }
+
+  public Integer getVoltage() {
+    return voltage;
+  }
+
+  public Long getAddressId() {
+    return addressId;
+  }
+
 }

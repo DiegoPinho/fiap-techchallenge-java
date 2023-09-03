@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fiap.java.techchallenge.controller.criterias.HomeApplianceCriteria;
+import com.fiap.java.techchallenge.controller.dto.ConsumptionDTO;
 import com.fiap.java.techchallenge.controller.dto.HomeApplianceDTO;
+import com.fiap.java.techchallenge.entity.Consumption;
 import com.fiap.java.techchallenge.entity.HomeAppliance;
 import com.fiap.java.techchallenge.service.HomeApplianceService;
 import com.fiap.java.techchallenge.utils.DTOValidator;
@@ -57,6 +60,13 @@ public class HomeApplianceController {
     Long userId = 1L; // FIXME: this is fake for now, soon will be by authentication
     HomeAppliance homeAppliance = this.homeApplianceService.create(userId, homeApplianceDTO);
     return ResponseEntity.status(HttpStatus.CREATED).body(homeAppliance);
+  }
+
+  @PostMapping("/comsumptions")
+  public ResponseEntity<?> addConsumption(@RequestBody ConsumptionDTO consumptionDTO) {
+    Consumption comsumption = this.homeApplianceService.addConsumption(consumptionDTO);
+    return ResponseEntity.status(HttpStatus.CREATED).body(comsumption);
+
   }
 
   @PutMapping("/{id}")

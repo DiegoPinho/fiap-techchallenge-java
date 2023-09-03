@@ -61,7 +61,7 @@ public class PersonController {
     return ResponseEntity.status(HttpStatus.CREATED).body(person);
   }
 
-  @PostMapping("/relationship")
+  @PostMapping("/relationships")
   public ResponseEntity<?> createRelationship(@RequestBody RelationshipDTO dto) {
     try {
       Relationship relationship = this.service.createRelationship(dto.getPersonId(), dto.getRelativeId(),

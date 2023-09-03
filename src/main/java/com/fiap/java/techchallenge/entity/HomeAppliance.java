@@ -1,11 +1,15 @@
 package com.fiap.java.techchallenge.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -25,7 +29,13 @@ public class HomeAppliance {
   private Integer power;
   private String manufacturer;
   private Integer voltage;
-  private Integer dailyUse;
+
+  @ManyToOne
+  @JoinColumn(name = "address_id")
+  private Address address;
+
+  @OneToMany(mappedBy = "homeAppliance")
+  private List<Consumption> consumptions;
 
   @ManyToOne
   @JoinColumn(name = "user_id")
@@ -34,14 +44,12 @@ public class HomeAppliance {
   public HomeAppliance() {
   }
 
-  public HomeAppliance(String name, String model, Integer power, String manufacturer, Integer voltage,
-      Integer dailyUse) {
+  public HomeAppliance(String name, String model, Integer power, String manufacturer, Integer voltage) {
     this.name = name;
     this.model = model;
     this.power = power;
     this.manufacturer = manufacturer;
     this.voltage = voltage;
-    this.dailyUse = dailyUse;
   }
 
   public Long getId() {
@@ -92,20 +100,28 @@ public class HomeAppliance {
     this.voltage = voltage;
   }
 
-  public Integer getDailyUse() {
-    return dailyUse;
-  }
-
-  public void setDailyUse(Integer dailyUse) {
-    this.dailyUse = dailyUse;
-  }
-
   public User getUser() {
     return user;
   }
 
   public void setUser(User user) {
     this.user = user;
+  }
+
+  public List<Consumption> getConsumptions() {
+    return consumptions;
+  }
+
+  public void setConsumptions(List<Consumption> consumptions) {
+    this.consumptions = consumptions;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
   }
 
 }

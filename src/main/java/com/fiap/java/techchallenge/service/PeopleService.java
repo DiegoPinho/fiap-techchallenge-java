@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fiap.java.techchallenge.controller.criterias.PersonCriteria;
 import com.fiap.java.techchallenge.controller.dto.PersonDTO;
+import com.fiap.java.techchallenge.entity.Address;
 import com.fiap.java.techchallenge.entity.Person;
 import com.fiap.java.techchallenge.entity.Relationship;
 import com.fiap.java.techchallenge.entity.User;
@@ -19,7 +20,7 @@ import com.fiap.java.techchallenge.repository.UserRepository;
 public class PeopleService {
 
   @Autowired
-  private PersonRepository repository;
+  private PersonRepository peopleRepository;
 
   @Autowired
   private UserRepository userRepository;
@@ -27,13 +28,16 @@ public class PeopleService {
   @Autowired
   private RelationshipRepository relationshipRepository;
 
+  @Autowired
+  private AddressService addressService;
+
   public List<Person> getAll(PersonCriteria criteira) {
     Specification<Person> specification = criteira.toSpecification();
-    return this.repository.findAll(specification);
+    return this.peopleRepository.findAll(specification);
   }
 
   public Person getById(Long id) {
-    return this.repository
+    return this.peopleRepository
         .findById(id)
         .orElseThrow(() -> new IllegalArgumentException("Person Not Found!"));
   }
@@ -42,22 +46,27 @@ public class PeopleService {
     User user = userRepository.findById(userId)
         .orElseThrow(() -> new IllegalArgumentException("User Not Found!"));
 
+    Address address = addressService.getById(userId);
+
     Person person = personDTO.toPerson();
     person.setUser(user);
-    return this.repository.save(person);
+    person.setAddress(address);
+
+    return this.peopleRepository.save(person);
   }
 
   public void update(Long id, PersonDTO personDTO) {
     this.getById(id); // checks if exists
+    addressService.getById(personDTO.getAddressId()); // checks if exists address
 
     Person person = personDTO.toPerson();
     person.setId(id);
-    this.repository.save(person);
+    this.peopleRepository.save(person);
   }
 
   public void delete(Long id) {
     this.getById(id); // checks if exists
-    this.repository.deleteById(id);
+    this.peopleRepository.deleteById(id);
   }
 
   public Relationship createRelationship(Long personId, Long relativeId, String relation) {

@@ -7,9 +7,14 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.fiap.java.techchallenge.controller.criterias.HomeApplianceCriteria;
+import com.fiap.java.techchallenge.controller.dto.ConsumptionDTO;
 import com.fiap.java.techchallenge.controller.dto.HomeApplianceDTO;
+import com.fiap.java.techchallenge.entity.Address;
+import com.fiap.java.techchallenge.entity.Consumption;
 import com.fiap.java.techchallenge.entity.HomeAppliance;
+import com.fiap.java.techchallenge.entity.Person;
 import com.fiap.java.techchallenge.entity.User;
+import com.fiap.java.techchallenge.repository.ConsumptionRepository;
 import com.fiap.java.techchallenge.repository.HomeApplianceRepository;
 import com.fiap.java.techchallenge.repository.UserRepository;
 
@@ -23,6 +28,15 @@ public class HomeApplianceService {
 
   @Autowired
   private UserRepository userRepository;
+
+  @Autowired
+  private ConsumptionRepository consumptionRepository;
+
+  @Autowired
+  private AddressService addressService;
+
+  @Autowired
+  private PeopleService peopleService;
 
   public List<HomeAppliance> getAll(HomeApplianceCriteria criteria) {
     Specification<HomeAppliance> specification = criteria.toSpecification();
@@ -39,7 +53,11 @@ public class HomeApplianceService {
     User user = userRepository.findById(userId)
         .orElseThrow(() -> new IllegalArgumentException("User Not Found!"));
 
+    Address address = this.addressService.getById(homeApplianceDTO.getAddressId());
+
     HomeAppliance homeAppliance = homeApplianceDTO.toHomeAppliance();
+
+    homeAppliance.setAddress(address);
     homeAppliance.setUser(user);
 
     return this.repository.save(homeAppliance);
@@ -58,6 +76,24 @@ public class HomeApplianceService {
   public void delete(Long id) {
     this.getById(id); // checks if exists
     this.repository.deleteById(id);
+  }
+
+  @Transactional
+  public Consumption addConsumption(ConsumptionDTO consumptionDTO) {
+
+    HomeAppliance homeAppliance = this.getById(consumptionDTO.getHomeApplianceId());
+    Person person = peopleService.getById(consumptionDTO.getPersonId());
+
+    if (!homeAppliance.getAddress().getId().equals(person.getAddress().getId())) {
+      throw new IllegalArgumentException("Address must be the same!");
+    }
+
+    Consumption consumption = new Consumption();
+    consumption.setHomeAppliance(homeAppliance);
+    consumption.setPerson(person);
+    consumption.setDailyUse(consumptionDTO.getDailyUse());
+
+    return this.consumptionRepository.save(consumption);
   }
 
 }

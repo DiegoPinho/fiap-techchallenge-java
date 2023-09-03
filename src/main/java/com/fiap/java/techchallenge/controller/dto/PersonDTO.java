@@ -26,8 +26,17 @@ public class PersonDTO {
   @NotNull(message = "Gender is required and cannot be blank")
   private Gender gender;
 
+  @JsonProperty
+  @NotNull(message = "AddressId is required and cannot be blank")
+  private Long addressId;
+
   public Person toPerson() {
     return new Person(
         this.name, this.birthDate, this.gender);
   }
+
+  public Long getAddressId() {
+    return addressId;
+  }
+
 }
