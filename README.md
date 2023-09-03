@@ -29,7 +29,7 @@ Checks if the API is ok.
 ## Addresses
 
 `GET /addresses`
-Return all addressess.
+Return all addressess. You can use filters by query params.
 
 `GET /addresses/:id`
 Return an address based on the id.
@@ -68,7 +68,7 @@ Deletes a address based on the id. You can't delete an address in use.
 ## People
 
 `GET /people`
-Return all people.
+Return all people. You can use filters by query params.
 
 `GET /people/:id`
 Return a person based on the id.
@@ -123,7 +123,7 @@ Return all home appliances.
 Return a home appliance based on the id.
 
 `POST /appliances`
-Creates a new home appliance.
+Creates a new home appliance. You can use filters by query params.
 
 body (JSON):
 ```
