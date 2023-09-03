@@ -117,13 +117,13 @@ Deletes a person based on the id. You can't delete a person in use.
 ## Home Appliance
 
 `GET /appliances`
-Return all home appliances.
+Return all home appliances. You can use filters by query params.
 
 `GET /appliances/:id`
 Return a home appliance based on the id.
 
 `POST /appliances`
-Creates a new home appliance. You can use filters by query params.
+Creates a new home appliance.
 
 body (JSON):
 ```
