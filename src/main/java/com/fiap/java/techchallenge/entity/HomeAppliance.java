@@ -3,6 +3,8 @@ package com.fiap.java.techchallenge.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +39,7 @@ public class HomeAppliance {
   @OneToMany(mappedBy = "homeAppliance")
   private List<Consumption> consumptions;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "user_id")
   private User user;

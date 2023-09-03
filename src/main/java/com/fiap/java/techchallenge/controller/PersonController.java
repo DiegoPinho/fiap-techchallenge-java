@@ -88,7 +88,7 @@ public class PersonController {
       this.service.delete(id);
       return ResponseEntity.ok().body(null);
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+      return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("Person not found or in use");
     }
   }
 

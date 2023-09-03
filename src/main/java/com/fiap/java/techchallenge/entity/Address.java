@@ -1,7 +1,8 @@
 package com.fiap.java.techchallenge.entity;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +31,7 @@ public class Address {
   private String city;
   private String state;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "user_id")
   private User user;

@@ -57,10 +57,11 @@ public class PeopleService {
 
   public void update(Long id, PersonDTO personDTO) {
     this.getById(id); // checks if exists
-    addressService.getById(personDTO.getAddressId()); // checks if exists address
+    Address address = addressService.getById(personDTO.getAddressId()); // checks if exists address
 
     Person person = personDTO.toPerson();
     person.setId(id);
+    person.setAddress(address);
     this.peopleRepository.save(person);
   }
 

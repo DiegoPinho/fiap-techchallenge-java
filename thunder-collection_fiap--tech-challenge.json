@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "fiap | tech-challenge",
-    "dateExported": "2023-09-02T06:15:09.729Z",
+    "dateExported": "2023-09-03T17:13:44.646Z",
     "version": "1.1",
     "folders": [
         {
@@ -64,7 +64,7 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2023-09-02T04:22:33.390Z",
-            "modified": "2023-09-02T04:23:19.632Z",
+            "modified": "2023-09-02T06:43:49.091Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -120,12 +120,12 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2023-09-02T04:17:29.490Z",
-            "modified": "2023-09-02T04:34:01.098Z",
+            "modified": "2023-09-03T15:57:05.177Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"Computador\",\n  \"model\": \"Dell\",\n  \"power\": 20,\n  \"manufacturer\": \"Dell\",\n  \"voltage\": 110,\n  \"dailyUse\": 24\n}",
+                "raw": "{\n  \"name\": \"Computador\",\n  \"model\": \"Dell\",\n  \"power\": 20,\n  \"manufacturer\": \"Dell\",\n  \"voltage\": 110,\n  \"addressId\": 1\n}",
                 "form": []
             },
             "tests": []
@@ -158,12 +158,12 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2023-09-02T04:22:33.392Z",
-            "modified": "2023-09-02T06:11:59.151Z",
+            "modified": "2023-09-03T15:56:17.114Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"Jonas\",\n  \"birthDate\": \"1992-07-21\",\n  \"gender\": \"MALE\",\n  \"relationship\": \"Father\"\n}",
+                "raw": "{\n  \"name\": \"Marcos\",\n  \"birthDate\": \"1992-07-21\",\n  \"gender\": \"MALE\",\n  \"addressId\": 1\n}",
                 "form": []
             },
             "tests": []
@@ -196,12 +196,12 @@
             "method": "PUT",
             "sortNum": 50000,
             "created": "2023-09-02T04:19:57.514Z",
-            "modified": "2023-09-02T04:38:20.419Z",
+            "modified": "2023-09-03T16:51:34.295Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"street\": \"Avenida Paulista\",\n  \"number\": 1200,\n  \"district\": \"Bela Vista\",\n  \"city\": \"São Paulo\",\n  \"state\": \"São Paulo\"\n}",
+                "raw": "{\n  \"street\": \"Avenida Paulista\",\n  \"number\": 1300,\n  \"district\": \"Bela Vista\",\n  \"city\": \"São Paulo\",\n  \"state\": \"São Paulo\"\n}",
                 "form": []
             },
             "tests": []
@@ -211,16 +211,16 @@
             "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
             "containerId": "95a52183-84c1-41ec-9dce-d5a98281a754",
             "name": "PUT /people",
-            "url": "http://localhost:8081/people/:id",
+            "url": "http://localhost:8081/people/1",
             "method": "PUT",
             "sortNum": 50000,
             "created": "2023-09-02T04:22:33.393Z",
-            "modified": "2023-09-02T04:25:00.492Z",
+            "modified": "2023-09-03T17:09:16.499Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"\",\n  \"birthDate\": \"\",\n  \"gender\": \"\",\n  \"relationship\": \"\",\n  \"relatives\": []\n}",
+                "raw": "{\n  \"name\": \"Lucas\",\n  \"birthDate\": \"1992-07-21\",\n  \"gender\": \"MALE\",\n  \"addressId\": 1\n}",
                 "form": []
             },
             "tests": []
@@ -248,7 +248,7 @@
             "method": "DELETE",
             "sortNum": 60000,
             "created": "2023-09-02T04:19:57.515Z",
-            "modified": "2023-09-02T04:38:49.432Z",
+            "modified": "2023-09-03T16:53:35.765Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -258,13 +258,32 @@
             "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
             "containerId": "95a52183-84c1-41ec-9dce-d5a98281a754",
             "name": "DELETE /people/:id",
-            "url": "http://localhost:8081/people/:id",
+            "url": "http://localhost:8081/people/1",
             "method": "DELETE",
             "sortNum": 60000,
             "created": "2023-09-02T04:22:33.394Z",
-            "modified": "2023-09-02T04:23:42.429Z",
+            "modified": "2023-09-03T17:10:35.097Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "46e2cf7d-a5f8-4e0e-8e58-6eabe0f164db",
+            "colId": "44f4afa8-6716-4445-98c6-2f945a343e82",
+            "containerId": "2069d431-1079-486d-8b4e-87faf3338b0b",
+            "name": "POST /comsumptions",
+            "url": "http://localhost:8081/appliances/comsumptions",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-09-03T15:57:56.938Z",
+            "modified": "2023-09-03T15:59:21.039Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"dailyUse\": 2,\n  \"homeApplianceId\": 1,\n  \"personId\": 1\n}",
+                "form": []
+            },
             "tests": []
         }
     ]

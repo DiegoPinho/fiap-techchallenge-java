@@ -1,5 +1,7 @@
 package com.fiap.java.techchallenge.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,10 +26,12 @@ public class Consumption {
   @Column(name = "dailyuse")
   private Integer dailyUse;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "homeappliance_id")
   private HomeAppliance homeAppliance;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "person_id")
   private Person person;

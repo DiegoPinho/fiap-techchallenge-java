@@ -18,8 +18,6 @@ import com.fiap.java.techchallenge.repository.ConsumptionRepository;
 import com.fiap.java.techchallenge.repository.HomeApplianceRepository;
 import com.fiap.java.techchallenge.repository.UserRepository;
 
-import org.springframework.transaction.annotation.Transactional;
-
 @Service
 public class HomeApplianceService {
 
@@ -63,7 +61,6 @@ public class HomeApplianceService {
     return this.repository.save(homeAppliance);
   }
 
-  @Transactional
   public void update(Long id, HomeApplianceDTO homeApplianceDTO) {
     this.getById(id); // checks if exists
 
@@ -72,13 +69,11 @@ public class HomeApplianceService {
     this.repository.save(updatedHomeAppliance);
   }
 
-  @Transactional
   public void delete(Long id) {
     this.getById(id); // checks if exists
     this.repository.deleteById(id);
   }
 
-  @Transactional
   public Consumption addConsumption(ConsumptionDTO consumptionDTO) {
 
     HomeAppliance homeAppliance = this.getById(consumptionDTO.getHomeApplianceId());

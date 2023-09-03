@@ -3,6 +3,8 @@ package com.fiap.java.techchallenge.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -36,7 +38,8 @@ public class Person {
   @OneToMany(mappedBy = "person")
   private List<Relationship> relationships;
 
-  @ManyToOne
+  @JsonIgnore
+  @ManyToOne()
   @JoinColumn(name = "user_id")
   private User user;
 
